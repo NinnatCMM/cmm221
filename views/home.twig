@@ -1,61 +1,29 @@
-<!DOCTYPE html>
-<html lang="en"> <! -- lang="en" คือการกำหนดภาษาหลักให้กับเว็บไซต์ -->
+{% extends 'layout/base.twig' %}
 
-<head>
-	<meta charset="UTF-8"> 
-	<title>CMM 19</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-	<link rel="stylesheet" href="/assets/home.css">
-</head>
-<body>
-	<header>
-	<div class="has-text-centered">
-            <img src="/assets/images/logo.png" alt="" width="145" height="auto">
-            </div> <! -- lang="en" จัดโลโก้ --> 
-	
-		<nav class="navbar-tabs"> 
-			<a href="#" class="navbar-item">WORK</a>
-			<a href="#" class="navbar-item">INTERVIEW</a>
-			<a href="#" class="navbar-item">INFORMATION</a>
-			<a href="#" class="navbar-item">PERSON</a>
-			<a href="#" class="navbar-item">WORK</a>
-			<a href="#" class="navbar-item">WORK</a>
-			<a href="#" class="navbar-item">WORK</a>
-			<a href="#" class="navbar-item">CONTACT</a>
-		</nav>
-	</header>
+{% block stylesheet %}
+	<link rel="stylesheet" type="text/css" href="/assets/home.css">
+{% endblock %}
+
+{% block content %}
 	<main>
 		<section class="banner"> 
 			<div class="highlight">
 				<div class="columns">
 					<div class="column highlight-item">
-						<h1>Hello</h1>
+					<div class="column highlight-item" style="background-image: url({{highlight.url}});"> 
+						<h1>{{ highlight.title }}</h1>
+					</div>
 					</div>
 				</div>
 			</div>
 			<div class="thumbnail">
 				<div class="columns is-marginless">
-					<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-1.jpg);">
-					Vegetable.
-					
-				</div>
-					
-					<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-2.jpg);">
-					Business.
-					
-				</div>
-
-					<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-3.jpg);">
-					Ingredient.
-					
-				</div>
-
-					<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-4.jpg);">
-					Playing.
-	
-				</div>
-			 </div>
-
+					{% for item in thumbnail %}
+					<a href="#" class="column thumbnail-item is-paddingless" style="background-image: url({{ item.url }});">
+						{{ item.title}}
+					</a>
+					{% endfor %}
+			 	</div>
 			</div>
 		</section>
 
@@ -184,18 +152,9 @@
 							</div>
 						</div>
 					</a>
-
 				</div>
-
-
-
 				</div>
-
 			</div> 
-		</section>
-
-
-			
+		</section>		
 	</main>
-</body>
-</html>
+{% endblock %}
